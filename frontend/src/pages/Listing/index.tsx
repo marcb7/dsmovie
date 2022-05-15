@@ -29,9 +29,15 @@ function Listing() {
             });
     }, [pageNumber]);
 
+    // Função com notação de expressão lambda, que vai mudar a página. Ela recebe como argumento um novo número de página (newPageNumber),
+    // do tipo number. Sempre que eu chamar essa função com um novo número de página, vai lá no meu useState e atualiza o valor dele pelo setPageNumber().
+    const handlePageChange = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
+    }
+
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange} />
             <div className="container">
                 <div className="row">
                     {page.content.map(item => (
